@@ -1,7 +1,7 @@
 ---
 title: Publish all Docs in Category
 summary: Update each doc in a specific category as published.
-color: #203821
+color: "#203821"
 emoji: 👾
 ---
 
