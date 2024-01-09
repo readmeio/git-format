@@ -9,7 +9,7 @@ emoji: 👾
 
 You can install the api module by running `npm install api`.
 
-```Node
+```Node@[1-2]
 const sdk = require('api')('https://docs.readme.com/developers/openapi/62056dee230e07007218be15');
 sdk.auth('<<user>>');
 
@@ -43,14 +43,14 @@ docs.forEach(async (doc) => {
 
 You need the category containing the docs to mark them as published. Here, we'll use the first category.
 
-<!-- Node[0-4,6] -->
-<!-- Python[2-3,9] -->
+<!-- Node@0-4,6 -->
+<!-- Python@2-3,9 -->
 
 # Get all docs in the category
 
 Using the category slug we got from the previous category, we can fetch all of the docs that belong to the category.
 
-```Python[1]
+```Python@0-4,6
   print "Hello I replace all the code!"
   print "New line here"
 ```
@@ -59,4 +59,4 @@ Using the category slug we got from the previous category, we can fetch all of t
 
 We can iterate over each doc returned in the previous call, and update each one to be published.
 
-<!-- Python[2] -->
+<!-- Python@2 -->
