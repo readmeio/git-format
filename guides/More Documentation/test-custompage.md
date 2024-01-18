@@ -17,6 +17,3 @@
 
 ## custom page
 this is a test of a markdown custom page
-
-  
-
