@@ -1,6 +1,6 @@
 Hello world!
 
-[Link to hello world](./hello-world.md)
+[Link to hello world](guides/Documentation/hello-world.md)
 
 <a href="./hello-world.md">Link to hello world</a>
 
