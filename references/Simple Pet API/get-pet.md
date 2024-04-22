@@ -1,7 +1,6 @@
 ---
 title: Get a Pet
 summary: This is the summary for the getting a pet
-api: oas.json
 operationId: get-pet
 ---
 

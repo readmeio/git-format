@@ -2,7 +2,7 @@
 title: Random Pet
 summary: This is a different endpoint in another category
 openapi:
-  file: oas.json
+  file: ../Simple Pet API/oas.json
   operationId: random-pet
 ---
 
