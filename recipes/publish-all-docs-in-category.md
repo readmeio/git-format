@@ -7,7 +7,7 @@ recipes:
   emoji: 👾
 ---
 
-```node selection=L1-L2
+```node
 const sdk = require("api")(
   "https://docs.readme.com/developers/openapi/62056dee230e07007218be15"
 );
@@ -22,7 +22,7 @@ docs.forEach(async (doc) => {
 });
 ```
 
-```python selection=L1-L2
+```python
 const sdk = require('api')('https://docs.readme.com/developers/openapi/62056dee230e07007218be15');
 sdk.auth('<<user>>');
 
