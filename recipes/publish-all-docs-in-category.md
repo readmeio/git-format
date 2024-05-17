@@ -37,6 +37,10 @@ docs.forEach(async (doc) => {
 });
 ```
 
+```json Response
+{ success: true }
+```
+
 # Install the api module from NPM
 
 <!-- node@L0-L4,L6 -->
