@@ -1,9 +1,9 @@
 ---
 title: Random Pet
 summary: This is a different endpoint in another category
-openapi:
+api:
   file: oas.json
-  operationId: random-pet
+  operationId: randomPet
 ---
 
 # Second Page

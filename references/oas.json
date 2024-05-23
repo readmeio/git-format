@@ -8,6 +8,7 @@
     "/pets/{petId}": {
       "get": {
         "operationId": "getPet",
+        "tags": ["Pet"],
         "parameters": [
           {
             "name": "petId",
@@ -39,6 +40,7 @@
     "/pets/random": {
       "get": {
         "operationId": "randomPet",
+        "tags": ["Pets"],
         "responses": {
           "200": {
             "description": "Get a random pet",
