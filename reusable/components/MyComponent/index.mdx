@@ -1,5 +1,10 @@
----
-tag: MyComponent
----
+export const MyComponent = ({ title = "Single-File Component", ...props }) => (
+  <article className="MyComponent">
+    <h1>{title}</h1>
+    <section>
+      {props.children}
+    </section>
+  </article>
+);
 
-<h1 className="MyComponent">{props.children}</h1>
+<MyComponent {...props} />
