@@ -19,7 +19,7 @@ interface PageSpecificFrontMatter extends CommonFrontMatter {
     title: string;
   };
   title: string;
-  type: 'basic' | 'endpoint' | 'link' | 'webhook';
+  type: 'basic' | 'link';
 }
 
 export type PageFrontmatter = PartialDeep<PageSpecificFrontMatter>;
