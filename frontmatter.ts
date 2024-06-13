@@ -1,7 +1,8 @@
-import type { PartialDeep } from 'type-fest';
+import type { PartialDeep, SetRequired } from 'type-fest';
 
 interface CommonFrontMatter {
   hidden: boolean;
+  title: string;
 }
 
 interface PageSpecificFrontMatter extends CommonFrontMatter {
@@ -18,26 +19,26 @@ interface PageSpecificFrontMatter extends CommonFrontMatter {
     /** @example This is the SEO title. */
     title: string;
   };
-  title: string;
-  type: 'basic' | 'link';
 }
 
-export type PageFrontmatter = PartialDeep<PageSpecificFrontMatter>;
+export type PageFrontmatter = SetRequired<PartialDeep<PageSpecificFrontMatter>, 'title'>;
 
-export type CustomPageFrontmatter = PartialDeep<PageSpecificFrontMatter>;
+export type CustomPageFrontmatter = SetRequired<PartialDeep<PageSpecificFrontMatter>, 'title'> &  {
+  fullscreen: boolean;
+};
 
-export type APIFrontMatter = PartialDeep<Omit<PageSpecificFrontMatter, 'type'>> & {
+export type APIFrontMatter = SetRequired<PartialDeep<PageSpecificFrontMatter>, 'title'> & {
   api: {
     file: string;
     operationId: string;
+    webhook?: boolean;
+    deprecated?: boolean;
   };
-  deprecated?: boolean;
-  type: 'endpoint' | 'webhook';
 };
 
-export type RecipeFrontMatter = PartialDeep<CommonFrontMatter & {
+export type RecipeFrontMatter = SetRequired<PartialDeep<CommonFrontMatter>, 'title'> & {
   recipes: {
     color: `#${string}`;
     emoji: string;
   };
-}>;
+};
