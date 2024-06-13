@@ -6,6 +6,7 @@ interface CommonFrontMatter {
 }
 
 interface PageSpecificFrontMatter extends CommonFrontMatter {
+  deprecated?: boolean;
   link: {
     new_tab: boolean;
     url: string;
@@ -32,7 +33,6 @@ export type APIFrontMatter = SetRequired<PartialDeep<PageSpecificFrontMatter>, '
     file: string;
     operationId: string;
     webhook?: boolean;
-    deprecated?: boolean;
   };
 };
 
