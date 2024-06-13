@@ -39,6 +39,6 @@ export type APIFrontMatter = SetRequired<PartialDeep<PageSpecificFrontMatter>, '
 export type RecipeFrontMatter = SetRequired<PartialDeep<CommonFrontMatter>, 'title'> & {
   recipes: {
     color: `#${string}`;
-    emoji: string;
+    icon: string;
   };
 };
