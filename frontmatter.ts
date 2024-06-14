@@ -1,16 +1,12 @@
 import type { PartialDeep, SetRequired } from 'type-fest';
 
-interface CommonFrontMatter {
+interface CoreFrontMatter {
   hidden: boolean;
   title: string;
 }
 
-interface PageSpecificFrontMatter extends CommonFrontMatter {
+interface CommonFrontMatter extends CoreFrontMatter {
   deprecated?: boolean;
-  link: {
-    new_tab: boolean;
-    url: string;
-  };
   metadata: {
     description: string;
     excerpt: string;
@@ -22,13 +18,18 @@ interface PageSpecificFrontMatter extends CommonFrontMatter {
   };
 }
 
-export type PageFrontmatter = SetRequired<PartialDeep<PageSpecificFrontMatter>, 'title'>;
+export type PageFrontmatter = SetRequired<PartialDeep<CommonFrontMatter>, 'title'> & {
+  link: {
+    new_tab: boolean;
+    url: string;
+  };
+};
 
-export type CustomPageFrontmatter = SetRequired<PartialDeep<PageSpecificFrontMatter>, 'title'> &  {
+export type CustomPageFrontmatter = SetRequired<PartialDeep<CommonFrontMatter>, 'title'> &  {
   fullscreen: boolean;
 };
 
-export type APIFrontMatter = SetRequired<PartialDeep<PageSpecificFrontMatter>, 'title'> & {
+export type APIFrontMatter = SetRequired<PartialDeep<CommonFrontMatter>, 'title'> & {
   api: {
     file: string;
     operationId: string;
