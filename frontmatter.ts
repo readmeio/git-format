@@ -37,7 +37,7 @@ export type CustomPageFrontmatter = SetRequired<
   fullscreen: boolean;
 };
 
-export type APIFrontMatter = SetRequired<PartialDeep<CommonPageFrontmatter>, 'title'> & {
+export type APIFrontmatter = SetRequired<PartialDeep<CommonPageFrontmatter>, 'title'> & {
   api: {
     file: string;
     operationId: string;
@@ -45,10 +45,12 @@ export type APIFrontMatter = SetRequired<PartialDeep<CommonPageFrontmatter>, 'ti
   };
 };
 
-export type RecipeFrontMatter = SetRequired<PartialDeep<CoreFrontMatter>, 'title'> & {
+export type RecipeFrontmatter = SetRequired<PartialDeep<CoreFrontMatter>, 'title'> & {
   metadata: PartialDeep<Pick<MetadataFrontmatter, 'description' | 'title'>>;
   recipes: {
     color: `#${string}`;
     icon: string;
   };
 };
+
+export type FrontmatterData = APIFrontmatter | CustomPageFrontmatter | PageFrontmatter | RecipeFrontmatter;
