@@ -55,7 +55,7 @@ export type APIFrontmatter = SetRequired<PartialDeep<CommonPageFrontmatter>, 'ti
 
 export type RecipeFrontmatter = SetRequired<PartialDeep<CoreFrontMatter>, 'title'> & {
   metadata: PartialDeep<Pick<MetadataFrontmatter, 'description' | 'title'>>;
-  recipes: {
+  recipe: {
     color: `#${string}`;
     icon: string;
   };
