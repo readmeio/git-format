@@ -18,6 +18,14 @@ interface MetadataFrontmatter {
 interface CommonPageFrontmatter extends CoreFrontMatter {
   deprecated?: boolean;
   metadata: MetadataFrontmatter;
+  next: {
+    description: string;
+    pages: {
+      slug: string;
+      title: string;
+      type: 'basic' | 'endpoint';
+    }[];
+  };
 }
 
 export type PageFrontmatter = SetRequired<PartialDeep<CommonPageFrontmatter>, 'title'> & {
