@@ -1,6 +1,6 @@
 ---
 title: Child Page
-summary: This is the child page
+excerpt: This is the child page
 hidden: true
 ---
 

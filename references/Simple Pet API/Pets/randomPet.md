@@ -1,6 +1,6 @@
 ---
 title: Random Pet
-summary: This is a different endpoint in another category
+excerpt: This is a different endpoint in another category
 api:
   file: oas.json
   operationId: randomPet

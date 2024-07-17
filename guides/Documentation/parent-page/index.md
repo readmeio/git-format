@@ -1,6 +1,6 @@
 ---
 title: Parent Page
-summary: This is the parent page
+excerpt: This is a parent page
 ---
 
-This is the parent page
+This is a parent page
