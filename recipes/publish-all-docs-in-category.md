@@ -1,6 +1,6 @@
 ---
 title: Publish all Docs in Category
-summary: Update each doc in a specific category as published.
+excerpt: Update each doc in a specific category as published.
 hidden: true
 recipes:
   color: "#203821"
