@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ReadMe frontmatter shapes",
+  "oneOf": [
+    {
+      "title": "Page",
+      "description": "This is the shape for files within the `docs/` directory.",
+      "$ref": "#/defs/filetype-page"
+    },
+    {
+      "title": "Custom Page",
+      "description": "This is the shape for files within the `custom_pages/` directory.",
+      "allOf": [
+        {
+          "$refs": "#/defs/common-page"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fullscreen": {
+              "type": ["boolean", "null"]
+            }
+          }
+        }
+      ],
+      "required": ["title"],
+      "not": {
+        "type": "object",
+        "properties": {
+          "deprecated": {
+            "type": "boolean"
+          }
+        },
+        "description": "Custom pages have everything that a common page has except that they can't be deprecated."
+      }
+    },
+    {
+      "title": "API Reference",
+      "description": "This is the shape for files within the `reference/` directory.",
+      "allOf": [
+        {
+          "$ref": "#/defs/filetype-page"
+        },
+        {
+          "api": {
+            "type": ["object", "null"],
+            "properties": {
+              "file": {
+                "type": "string"
+              },
+              "operationId": {
+                "type": "string"
+              },
+              "webhook": {
+                "type": ["boolean", "null"]
+              }
+            },
+            "required": ["file", "operationId"]            ,
+            "description": "Information about the API operation that this page is documenting. If this is `null` or otherwise nonexistent then this page will be a standard page."
+          }
+        }
+      ]
+    },
+    {
+      "title": "API Reference",
+      "description": "This is the shape for files within the `reference/` directory.",
+      "allOf": [
+        {
+          "$refs": "#/defs/core"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": ["string", "null"]
+            },
+            "recipe": {
+              "type": "object",
+              "properties": {
+                "color": {
+                  "type": "string",
+                  "pattern": "/^#[0-9A-F]{6}$/i"
+                },
+                "icon": {
+                  "type": "string"
+                }
+              },
+              "required": ["color", "icon"]
+            }
+          }
+        }
+      ],
+      "required": ["title", "recipe"]
+    },
+    {
+      "title": "Reusable Content",
+      "description": "This is the shape for reusable content in the `reusable_content/` directory.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": ["string", "null"]
+        }
+      },
+      "required": ["name"]
+    }
+  ],
+  "defs": {
+    "core": {
+      "title": "Core properties that are available on all file types.",
+      "type:": "object",
+      "properties": {
+        "hidden": {
+          "type": ["boolean", "null"]
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "metadata": {
+      "title": "Properties that control file metadata.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": ["string", "null"]
+        },
+        "image": {
+          "type": ["string", "null"]
+        },
+        "keywords": {
+          "type": "array",
+          "items": {
+            "type": ["string", "null"]
+          }
+        },
+        "robots": {
+          "type": ["string", "null"],
+          "enum": ["index", "noindex"]
+        },
+        "title": {
+          "type": ["string", "null"],
+          "description": "This is the title that's used for SEO metadata."
+        }
+      }
+    },
+    "common-page": {
+      "allOf": [
+        {
+          "$ref": "#/defs/core"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "deprecated": {
+              "type": ["boolean", "null"]
+            },
+            "excerpt": {
+              "type": ["string", "null"]
+            },
+            "metadata": {
+              "$ref": "#/defs/metadata"
+            },
+            "next": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "type": ["string", "null"]
+                },
+                "pages": {
+                  "type": ["array", "null"],
+                  "items": {
+                    "oneOf": [
+                      {
+                        "title": "The next page is a standard or API Reference page.",
+                        "type": "object",
+                        "properties": {
+                          "slug": {
+                            "type": "string"
+                          },
+                          "title": {
+                            "type": ["string", "null"]
+                          },
+                          "type": {
+                            "type": "string",
+                            "enum": ["basic", "endpoint"]
+                          }
+                        },
+                        "required": ["slug", "type"]
+                      },
+                      {
+                        "title": "The next page is a link to another URL.",
+                        "type": "object",
+                        "properties": {
+                          "title": {
+                            "type": ["string", "null"]
+                          },
+                          "type": {
+                            "const": "link"
+                          },
+                          "url": {
+                            "type": "string",
+                            "format": "url"
+                          }
+                        },
+                        "required": ["type", "url"]
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "filetype-page": {
+      "allOf": [
+        {
+          "$refs": "#/defs/common-page"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "link": {
+              "type": ["object", "null"],
+              "properties": {
+                "new_tab": {
+                  "type": ["boolean", "null"]
+                },
+                "url": {
+                  "type": ["string", "null"]
+                }
+              },
+              "description": "Information about where this page should redirect to. If this is `null` or otherwise nonexistent then this page will be a standard page."
+            }
+          }
+        }
+      ],
+      "required": ["title"]
+    }
+  }
+}
