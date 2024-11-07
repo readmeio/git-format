@@ -57,6 +57,13 @@
             },
             "required": ["file", "operationId"]            ,
             "description": "Information about the API operation that this page is documenting. If this is `null` or otherwise nonexistent then this page will be a standard page."
+          },
+          "recipes": {
+            "type": ["array", "null"],
+            "items": {
+              "type": "string"
+            },
+            "description": "A list of recipes that this API reference is associated with."
           }
         }
       ]
