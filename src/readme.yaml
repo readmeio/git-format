@@ -1,0 +1,13 @@
+appearance:
+  branding: false
+  logo:
+    size: 24px
+    src: ./logo.svg
+    whiteSrc: ./logo-white.svg
+  favicon: ./favicon.png
+  header:
+    color: #000
+    subheaderLayout: links
+    style: line
+  theme: #000
+  colorScheme: light
