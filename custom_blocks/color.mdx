@@ -1,0 +1,27 @@
+---
+name: Color Component
+version: 4.8
+author: Greg Koberger
+---
+
+const Style = () => (
+
+<style>{`
+  .Color {
+    color: red;
+  }
+`}</style>
+
+);
+
+export const Color = ({ color }) => (
+  <>
+  <Style />
+  <div style={{ color }} className="Color">
+    I’m colorful!
+  </div>
+);
+
+# Example Usage
+
+<Color color="red">This text is colored!</Color>
