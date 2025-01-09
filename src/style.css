@@ -1,0 +1,30 @@
+.markdown-body .callout[theme="🥳"] {
+  --background: #C878E1;
+  --border: #375CD7;
+  --text: #f5fffa;
+}
+
+.markdown-body .callout[theme="🚀"] {
+  --background: #;
+  --border: #;
+  --text: #;
+}
+
+.markdown-body .callout[theme="🎉"] {
+  --background: #;
+  --border: #;
+  --text: #;
+}
+
+.rm-Changelog .markdown-body p:first-of-type {
+  font-size: 1.25em;
+  margin: 30px 0;
+}
+
+.rm-Changelog .markdown-body h2 + p {
+  font-size: 1.25em;
+}
+
+.rm-Changelog .markdown-body h3 {
+  margin-top: 30px;
+}
