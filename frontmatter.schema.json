@@ -12,7 +12,7 @@
       "description": "This is the shape for files within the `custom_pages/` directory.",
       "allOf": [
         {
-          "$refs": "#/defs/common-page"
+          "$ref": "#/defs/common-page"
         },
         {
           "type": "object",
@@ -42,38 +42,46 @@
           "$ref": "#/defs/filetype-page"
         },
         {
-          "api": {
-            "type": ["object", "null"],
-            "properties": {
-              "file": {
+          "type": "object",
+          "properties": {
+            "api": {
+              "type": ["object", "null"],
+              "properties": {
+                "file": {
+                  "type": "string"
+                },
+                "operationId": {
+                  "type": "string"
+                },
+                "webhook": {
+                  "type": ["boolean", "null"]
+                }
+              },
+              "required": ["file", "operationId"],
+              "description": "Information about the API operation that this page is documenting. Setting this to `null` will detach it from the API operation and make it a standard page."
+            },
+            "api_config": {
+              "type": ["string", "null"],
+              "enum": ["authentication", "getting-started", "my-requests"],
+              "description": "Describes a Reference config page of a particular type."
+            },
+            "recipes": {
+              "type": ["array", "null"],
+              "items": {
                 "type": "string"
               },
-              "operationId": {
-                "type": "string"
-              },
-              "webhook": {
-                "type": ["boolean", "null"]
-              }
-            },
-            "required": ["file", "operationId"]            ,
-            "description": "Information about the API operation that this page is documenting. If this is `null` or otherwise nonexistent then this page will be a standard page."
-          },
-          "recipes": {
-            "type": ["array", "null"],
-            "items": {
-              "type": "string"
-            },
-            "description": "A list of recipes that this API reference is associated with."
+              "description": "A collection of recipes that are related to this API operation."
+            }
           }
         }
       ]
     },
     {
-      "title": "API Reference",
-      "description": "This is the shape for files within the `reference/` directory.",
+      "title": "Recipe",
+      "description": "This is the shape for files within the `recipes/` directory.",
       "allOf": [
         {
-          "$refs": "#/defs/core"
+          "$ref": "#/defs/core"
         },
         {
           "type": "object",
@@ -86,7 +94,7 @@
               "properties": {
                 "color": {
                   "type": "string",
-                  "pattern": "/^#[0-9A-F]{6}$/i"
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
                 },
                 "icon": {
                   "type": "string"
@@ -100,8 +108,8 @@
       "required": ["title", "recipe"]
     },
     {
-      "title": "Reusable Content",
-      "description": "This is the shape for reusable content in the `reusable_content/` directory.",
+      "title": "Custom Block",
+      "description": "This is the shape for custom blocks in the `custom_blocks/` directory.",
       "type": "object",
       "properties": {
         "name": {
@@ -114,7 +122,7 @@
   "defs": {
     "core": {
       "title": "Core properties that are available on all file types.",
-      "type:": "object",
+      "type": "object",
       "properties": {
         "hidden": {
           "type": ["boolean", "null"]
@@ -135,9 +143,9 @@
           "type": ["string", "null"]
         },
         "keywords": {
-          "type": "array",
+          "type": ["array", "null"],
           "items": {
-            "type": ["string", "null"]
+            "type": "string"
           }
         },
         "robots": {
@@ -164,6 +172,9 @@
             "excerpt": {
               "type": ["string", "null"]
             },
+            "icon": {
+              "type": ["string", "null"]
+            },
             "metadata": {
               "$ref": "#/defs/metadata"
             },
@@ -178,7 +189,7 @@
                   "items": {
                     "oneOf": [
                       {
-                        "title": "The next page is a standard or API Reference page.",
+                        "title": "The next page is a standard, API Reference, changelog, or custom page.",
                         "type": "object",
                         "properties": {
                           "slug": {
@@ -189,7 +200,7 @@
                           },
                           "type": {
                             "type": "string",
-                            "enum": ["basic", "endpoint"]
+                            "enum": ["basic", "endpoint", "changelog", "custom_page"]
                           }
                         },
                         "required": ["slug", "type"]
@@ -206,7 +217,7 @@
                           },
                           "url": {
                             "type": "string",
-                            "format": "url"
+                            "format": "uri"
                           }
                         },
                         "required": ["type", "url"]
@@ -223,7 +234,7 @@
     "filetype-page": {
       "allOf": [
         {
-          "$refs": "#/defs/common-page"
+          "$ref": "#/defs/common-page"
         },
         {
           "type": "object",
@@ -238,7 +249,7 @@
                   "type": ["string", "null"]
                 }
               },
-              "description": "Information about where this page should redirect to. If this is `null` or otherwise nonexistent then this page will be a standard page."
+              "description": "Information about where this page should redirect to. Setting this to `null` will make the page a standard page."
             }
           }
         }

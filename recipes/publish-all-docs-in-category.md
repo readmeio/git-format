@@ -1,10 +1,10 @@
 ---
 title: Publish all Docs in Category
-excerpt: Update each doc in a specific category as published.
+description: Update each doc in a specific category as published.
 hidden: true
-recipes:
-  color: "#203821"
-  emoji: 👾
+recipe:
+  color: '#203821'
+  icon: 👾
 ---
 
 ```node

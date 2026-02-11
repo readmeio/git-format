@@ -1,0 +1,15 @@
+---
+name: MyComponent
+---
+export const MyComponent = ({ title = "Single-File Component", ...props }) => (
+  <article className="rounded-lg border border-gray-200 p-6 text-red-600">
+    <h1 className="text-2xl font-bold mb-4">{title}</h1>
+    <section>
+      {props.children}
+    </section>
+  </article>
+);
+
+<MyComponent someProp={'example value'}>
+  The full text of this file will be auto-filled when this component is chosen from the editors slash menu.
+</MyComponent>
