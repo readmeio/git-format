@@ -18,12 +18,17 @@
           "type": "object",
           "properties": {
             "fullscreen": {
-              "type": ["boolean", "null"]
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           }
         }
       ],
-      "required": ["title"],
+      "required": [
+        "title"
+      ],
       "not": {
         "type": "object",
         "properties": {
@@ -45,31 +50,62 @@
           "type": "object",
           "properties": {
             "api": {
-              "type": ["object", "null"],
-              "properties": {
-                "file": {
-                  "type": "string"
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "file": {
+                      "type": "string"
+                    },
+                    "operationId": {
+                      "type": "string"
+                    },
+                    "webhook": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "file",
+                    "operationId"
+                  ]
                 },
-                "operationId": {
-                  "type": "string"
-                },
-                "webhook": {
-                  "type": ["boolean", "null"]
+                {
+                  "type": "null"
                 }
-              },
-              "required": ["file", "operationId"],
+              ],
               "description": "Information about the API operation that this page is documenting. Setting this to `null` will detach it from the API operation and make it a standard page."
             },
             "api_config": {
-              "type": ["string", "null"],
-              "enum": ["authentication", "getting-started", "my-requests"],
+              "anyOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "authentication",
+                    "getting-started",
+                    "my-requests"
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "description": "Describes a Reference config page of a particular type."
             },
             "recipes": {
-              "type": ["array", "null"],
-              "items": {
-                "type": "string"
-              },
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
               "description": "A collection of recipes that are related to this API operation."
             }
           }
@@ -87,25 +123,34 @@
           "type": "object",
           "properties": {
             "description": {
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "recipe": {
               "type": "object",
               "properties": {
                 "color": {
                   "type": "string",
-                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                  "pattern": "^#[0-9A-F]{6}$"
                 },
                 "icon": {
                   "type": "string"
                 }
               },
-              "required": ["color", "icon"]
+              "required": [
+                "color",
+                "icon"
+              ]
             }
           }
         }
       ],
-      "required": ["title", "recipe"]
+      "required": [
+        "title",
+        "recipe"
+      ]
     },
     {
       "title": "Custom Block",
@@ -113,10 +158,15 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
-      "required": ["name"]
+      "required": [
+        "name"
+      ]
     }
   ],
   "defs": {
@@ -125,7 +175,10 @@
       "type": "object",
       "properties": {
         "hidden": {
-          "type": ["boolean", "null"]
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "title": {
           "type": "string"
@@ -137,23 +190,49 @@
       "type": "object",
       "properties": {
         "description": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "image": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "keywords": {
-          "type": ["array", "null"],
-          "items": {
-            "type": "string"
-          }
+          "anyOf": [
+            {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "robots": {
-          "type": ["string", "null"],
-          "enum": ["index", "noindex"]
+          "anyOf": [
+            {
+              "type": "string",
+              "enum": [
+                "index",
+                "noindex"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "title": {
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "This is the title that's used for SEO metadata."
         }
       }
@@ -167,13 +246,22 @@
           "type": "object",
           "properties": {
             "deprecated": {
-              "type": ["boolean", "null"]
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "excerpt": {
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "icon": {
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "metadata": {
               "$ref": "#/defs/metadata"
@@ -182,50 +270,79 @@
               "type": "object",
               "properties": {
                 "description": {
-                  "type": ["string", "null"]
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "pages": {
-                  "type": ["array", "null"],
-                  "items": {
-                    "oneOf": [
-                      {
-                        "title": "The next page is a standard, API Reference, changelog, or custom page.",
-                        "type": "object",
-                        "properties": {
-                          "slug": {
-                            "type": "string"
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "anyOf": [
+                          {
+                            "type": "object",
+                            "properties": {
+                              "slug": {
+                                "type": "string"
+                              },
+                              "title": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "type": {
+                                "type": "string",
+                                "enum": [
+                                  "basic",
+                                  "endpoint",
+                                  "changelog",
+                                  "custom_page"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "slug",
+                              "type"
+                            ]
                           },
-                          "title": {
-                            "type": ["string", "null"]
-                          },
-                          "type": {
-                            "type": "string",
-                            "enum": ["basic", "endpoint", "changelog", "custom_page"]
+                          {
+                            "type": "object",
+                            "properties": {
+                              "title": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "type": {
+                                "type": "string",
+                                "const": "link"
+                              },
+                              "url": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "type",
+                              "url"
+                            ]
                           }
-                        },
-                        "required": ["slug", "type"]
-                      },
-                      {
-                        "title": "The next page is a link to another URL.",
-                        "type": "object",
-                        "properties": {
-                          "title": {
-                            "type": ["string", "null"]
-                          },
-                          "type": {
-                            "const": "link"
-                          },
-                          "url": {
-                            "type": "string",
-                            "format": "uri"
-                          }
-                        },
-                        "required": ["type", "url"]
+                        ]
                       }
-                    ]
-                  }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
                 }
-              }
+              },
+              "required": [
+                "description",
+                "pages"
+              ]
             }
           }
         }
@@ -240,21 +357,36 @@
           "type": "object",
           "properties": {
             "link": {
-              "type": ["object", "null"],
-              "properties": {
-                "new_tab": {
-                  "type": ["boolean", "null"]
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "new_tab": {
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
+                    },
+                    "url": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
                 },
-                "url": {
-                  "type": ["string", "null"]
+                {
+                  "type": "null"
                 }
-              },
+              ],
               "description": "Information about where this page should redirect to. Setting this to `null` will make the page a standard page."
             }
           }
         }
       ],
-      "required": ["title"]
+      "required": [
+        "title"
+      ]
     }
   }
 }
