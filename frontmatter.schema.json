@@ -18,12 +18,17 @@
           "type": "object",
           "properties": {
             "fullscreen": {
-              "type": ["boolean", "null"]
+              "type": [
+                "boolean",
+                "null"
+              ]
             }
           }
         }
       ],
-      "required": ["title"],
+      "required": [
+        "title"
+      ],
       "not": {
         "type": "object",
         "properties": {
@@ -56,10 +61,16 @@
                       "type": "string"
                     },
                     "webhook": {
-                      "type": ["boolean", "null"]
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     }
                   },
-                  "required": ["file", "operationId"]
+                  "required": [
+                    "file",
+                    "operationId"
+                  ]
                 },
                 {
                   "type": "null"
@@ -71,7 +82,11 @@
               "anyOf": [
                 {
                   "type": "string",
-                  "enum": ["authentication", "getting-started", "my-requests"]
+                  "enum": [
+                    "authentication",
+                    "getting-started",
+                    "my-requests"
+                  ]
                 },
                 {
                   "type": "null"
@@ -108,25 +123,34 @@
           "type": "object",
           "properties": {
             "description": {
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "recipe": {
               "type": "object",
               "properties": {
                 "color": {
                   "type": "string",
-                  "pattern": "^#[0-9A-F]{6}$"
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
                 },
                 "icon": {
                   "type": "string"
                 }
               },
-              "required": ["color", "icon"]
+              "required": [
+                "color",
+                "icon"
+              ]
             }
           }
         }
       ],
-      "required": ["title", "recipe"]
+      "required": [
+        "title",
+        "recipe"
+      ]
     },
     {
       "title": "Custom Block",
@@ -134,10 +158,15 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         }
       },
-      "required": ["name"]
+      "required": [
+        "name"
+      ]
     }
   ],
   "defs": {
@@ -146,7 +175,10 @@
       "type": "object",
       "properties": {
         "hidden": {
-          "type": ["boolean", "null"]
+          "type": [
+            "boolean",
+            "null"
+          ]
         },
         "title": {
           "type": "string"
@@ -158,10 +190,16 @@
       "type": "object",
       "properties": {
         "description": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "image": {
-          "type": ["string", "null"]
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "keywords": {
           "anyOf": [
@@ -180,7 +218,10 @@
           "anyOf": [
             {
               "type": "string",
-              "enum": ["index", "noindex"]
+              "enum": [
+                "index",
+                "noindex"
+              ]
             },
             {
               "type": "null"
@@ -188,7 +229,10 @@
           ]
         },
         "title": {
-          "type": ["string", "null"],
+          "type": [
+            "string",
+            "null"
+          ],
           "description": "This is the title that's used for SEO metadata."
         }
       }
@@ -202,13 +246,22 @@
           "type": "object",
           "properties": {
             "deprecated": {
-              "type": ["boolean", "null"]
+              "type": [
+                "boolean",
+                "null"
+              ]
             },
             "excerpt": {
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "icon": {
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "metadata": {
               "$ref": "#/defs/metadata"
@@ -217,7 +270,10 @@
               "type": "object",
               "properties": {
                 "description": {
-                  "type": ["string", "null"]
+                  "type": [
+                    "string",
+                    "null"
+                  ]
                 },
                 "pages": {
                   "anyOf": [
@@ -232,7 +288,10 @@
                                 "type": "string"
                               },
                               "title": {
-                                "type": ["string", "null"]
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
                               },
                               "type": {
                                 "type": "string",
@@ -249,7 +308,10 @@
                             "type": "object",
                             "properties": {
                               "title": {
-                                "type": ["string", "null"]
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
                               },
                               "type": {
                                 "type": "string",
@@ -288,10 +350,16 @@
                   "type": "object",
                   "properties": {
                     "new_tab": {
-                      "type": ["boolean", "null"]
+                      "type": [
+                        "boolean",
+                        "null"
+                      ]
                     },
                     "url": {
-                      "type": ["string", "null"]
+                      "type": [
+                        "string",
+                        "null"
+                      ]
                     }
                   }
                 },
@@ -304,7 +372,9 @@
           }
         }
       ],
-      "required": ["title"]
+      "required": [
+        "title"
+      ]
     }
   }
 }
