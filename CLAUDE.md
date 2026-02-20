@@ -329,6 +329,19 @@ api:
 
 You can also add **conceptual guide pages** inside `reference/` (authentication, error handling, pagination, etc.) by creating pages without an `api` frontmatter field, or by setting `api: null`.
 
+## Validation rules
+
+When attempting to validate the repo, these are the common issues to check for and how to fix them:
+
+- **frontmatter** — Invalid or unknown frontmatter properties. Unknown properties should either be removed or prefixed with `x-` (e.g., `category` → `x-category`). Typos are flagged with the closest valid property name.
+- **ordering** — Every file and subdirectory should be listed in its directory's `_order.yaml`. Slugs that YAML interprets as non-strings (numbers like `404`, booleans like `true`/`false`/`yes`/`no`) must be quoted (e.g., `- "404"`). Never remove quotes from existing entries.
+- **numbering** — Files ending in `-1`, `-2`, etc. where no base name exists should be renamed (e.g., `setup-1.md` → `setup.md`). These suffixes are holdovers from an old bug.
+- **duplicates** — Slugs must be unique across all `docs/` and `reference/` pages. Never rename files inside `ReadMeConfig/` — these have special internal names.
+- **oas-reference** — Reference pages with `api.file` frontmatter must point to a valid OAS file. The `api.operationId` must exist in the spec.
+- **oas-schema** — OAS files must be valid OpenAPI or Swagger specs. Error messages include line numbers and context.
+- **components** — MDX component tags (`<Name>`) must reference a built-in or custom block. Custom block `.md` snippets should use PascalCase filenames (e.g., `MySnippet.md` for `<MySnippet />`).
+- **recipes** — Must have code blocks at the top, then `# Heading` sections. Snippet references (`<!-- lang@lines -->`) must reference existing code blocks with valid line ranges.
+
 ## Key rules when editing
 
 1. **Don't add frontmatter fields not in the schema.** Check `frontmatter.schema.json` if unsure.
