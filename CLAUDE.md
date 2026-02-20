@@ -178,21 +178,51 @@ docs/Documentation/
 
 ## Linking between pages
 
-Four link formats are supported:
+### Published URL structure
+
+On the published ReadMe site, pages have flat URL paths based on their content type:
+
+| Content type | Published URL |
+|---|---|
+| Doc pages (`docs/`) | `/docs/{slug}` |
+| API reference (`reference/`) | `/reference/{slug}` |
+| Recipes (`recipes/`) | `/recipes/{slug}` |
+| Custom pages (`custom_pages/`) | `/page/{slug}` |
+
+The slug comes from the filename (without `.md`). Category folders do **not** appear in published URLs — `docs/Getting Started/quickstart.md` becomes `/docs/quickstart`. Child pages nest under their parent: `docs/Category/parent-page/child-page.md` becomes `/docs/parent-page/child-page`.
+
+**Important:** Site URLs may include a prefix (e.g., `/lang-en/docs/slug`), so never use absolute paths when linking between pages. Use relative links instead.
+
+### Relative links (preferred)
+
+Always use relative links based on the published URL structure above (not the file structure in this repo). Do not include `.md` extensions in links.
 
 ```markdown
-<!-- Relative path -->
-[Link text](./hello-world.md)
+<!-- Link to a page in the same section -->
+[Link text](./other-page)
 
-<!-- Absolute path (starts with /guides/ for docs) -->
-[Link text](/guides/Documentation/hello-world.md)
+<!-- Link from a doc page to a reference page -->
+[Link text](../reference/some-endpoint)
 
-<!-- HTML anchor tag -->
-<a href="./hello-world.md">Link text</a>
+<!-- Link from a child page to a sibling -->
+[Link text](./sibling-page)
 
-<!-- ReadMe protocol -->
+<!-- Link from a child page up to another doc -->
+[Link text](../other-page)
+
+<!-- HTML anchor tags also work with relative links -->
+<a href="./other-page">Link text</a>
+```
+
+### `doc:` protocol links
+
+ReadMe supports a special `doc:slug` protocol that resolves to doc pages regardless of URL prefix. This is convenient but only works in markdown links (not in `<a>` tags or component `href` attributes):
+
+```markdown
 [Link text](doc:hello-world)
 ```
+
+**Use relative links as the default.** The `doc:` protocol is an acceptable alternative for markdown-only links to doc pages.
 
 ## Markdown content conventions
 
@@ -238,10 +268,10 @@ pet = sdk.get_pet(pet_id=123)
 **Cards:**
 ```markdown
 <Cards columns={3}>
-  <Card title="Getting Started" icon="rocket" href="./getting-started.md">
+  <Card title="Getting Started" icon="rocket" href="./getting-started">
     Quick intro to the platform
   </Card>
-  <Card title="API Reference" icon="code" href="/reference/">
+  <Card title="API Reference" icon="code" href="../reference/">
     Explore the API
   </Card>
 </Cards>
