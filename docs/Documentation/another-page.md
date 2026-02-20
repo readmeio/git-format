@@ -1,3 +1,7 @@
+---
+title: Another Page
+---
+
 Hello world!
 
 [Link to hello world (absolute)](/guides/Documentation/hello-world.md)

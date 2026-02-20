@@ -1,6 +1,5 @@
 ---
-title: Get a Pet
-excerpt: This is the summary for the getting a pet
+title: getPet
 api:
   file: oas.json
   operationId: getPet
