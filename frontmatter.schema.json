@@ -263,6 +263,13 @@
                 "null"
               ]
             },
+            "x-import": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "Set during the docs site import flow. This is a link to the external page that needs to be imported and signifies this page has not yet been imported. It is removed once the page content is imported."
+            },
             "metadata": {
               "$ref": "#/defs/metadata"
             },
