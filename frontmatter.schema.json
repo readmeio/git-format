@@ -315,7 +315,32 @@
                                   "custom_page"
                                 ]
                               }
-                            }
+                            },
+                            "description": "A page within the developer site. Does not support multiguides and is generally deprecated in favor of `type: page`."
+                          },
+                          {
+                            "type": "object",
+                            "properties": {
+                              "slug": {
+                                "type": "string"
+                              },
+                              "directory": {
+                                "type": "string",
+                                "pattern": "^[a-z0-9][a-z0-9_-]{0,29}$",
+                                "description": "The section directory of the page."
+                              },
+                              "title": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "type": {
+                                "type": "string",
+                                "const": "page"
+                              }
+                            },
+                            "description": "A page within the developer site. Multiguides compatible."
                           },
                           {
                             "type": "object",
